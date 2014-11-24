@@ -19,11 +19,14 @@ class MenuController  :
         raise ValueError("MenuController does not need to be passed arguments after initialization.")
 
   def __init__(self, *args, **kwargs):
-    self.newAct = QAction("&New", self.main_window, shortcut=QKeySequence.New,
-    statusTip="Create a new file", triggered=self.new_file)
-    self.file_menu = self.main_window.menuBar().addMenu("&File")
-    print("==main window:{0}".format(self.main_window))
-    self.file_menu.addAction(self.newAct)
+    self._create_actions()
 
-  def new_file(self):
-    print("new file invoked")
+    self.course_menu = self.main_window.menuBar().addMenu("&Course")
+    self.course_menu.addAction(self.new_course)
+
+  def new_course_selected(self):
+    print("new course invoked")
+
+  def _create_actions(self):
+    self.new_course = QAction("&New Course", self.main_window, shortcut=QKeySequence.New,
+      statusTip="Create a new course", triggered=self.new_course_selected)
