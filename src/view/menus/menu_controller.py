@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QAction
-from PyQt5.QtGui import QKeySequence
 
 class MenuController  :
   _instance = None
@@ -22,11 +21,13 @@ class MenuController  :
     self._create_actions()
 
     self.course_menu = self.main_window.menuBar().addMenu("&Course")
-    self.course_menu.addAction(self.new_course)
+    self.course_menu.addAction(self.new_course_action)
 
   def new_course_selected(self):
     print("new course invoked")
 
   def _create_actions(self):
-    self.new_course = QAction("&New Course", self.main_window, shortcut=QKeySequence.New,
+    self.new_course_action = QAction("New Course", self.main_window,
       statusTip="Create a new course", triggered=self.new_course_selected)
+    self.new_course_action.setShortcut('Ctrl+C')
+
