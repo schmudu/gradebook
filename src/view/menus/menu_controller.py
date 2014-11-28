@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QAction
+from view.windows.dialogs.new_course_dialog import NewCourseDialog
 
 class MenuController  :
   _instance = None
@@ -25,6 +26,7 @@ class MenuController  :
 
   def new_course_selected(self):
     print("new course invoked")
+    NewCourseDialog(main_window=self.main_window)
 
   def _create_actions(self):
     self.new_course_action = QAction("New Course", self.main_window,
