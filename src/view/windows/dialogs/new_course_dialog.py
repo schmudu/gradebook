@@ -1,5 +1,6 @@
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QBoxLayout, QFormLayout, QLabel, QLineEdit, QPushButton, QDialog, QSizePolicy, QWidget
+from PyQt5.QtWidgets import QBoxLayout, QFormLayout, QLabel, QPushButton, QDialog, QWidget
+from view.lib.custom_line_edit import CustomLineEdit
 
 class NewCourseDialog(QDialog):
   def __init__(self, *args, **kwargs):
@@ -22,7 +23,7 @@ class NewCourseDialog(QDialog):
     form_layout = QFormLayout()
     form_layout.setFormAlignment(QtCore.Qt.AlignLeft)
     new_course_label = QLabel("Course Name:")
-    new_course_entry = QLineEdit("<Enter course name>")
+    new_course_entry = CustomLineEdit(default_entry="<Enter course name>")
     new_course_entry.setFixedWidth(230)
     form_layout.addRow(new_course_label, new_course_entry)
     form_widget.setLayout(form_layout)
@@ -40,6 +41,8 @@ class NewCourseDialog(QDialog):
     main_layout.addWidget(form_widget)
     main_layout.addWidget(action_widget)
     self.setLayout(main_layout)
-    #self.addWidget(main_widget)
+
+    new_course_entry.setFocus()
+    new_course_entry.selectAll()
 
 
