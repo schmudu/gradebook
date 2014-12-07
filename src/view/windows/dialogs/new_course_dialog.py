@@ -33,9 +33,10 @@ class NewCourseDialog(QDialog):
     add_course_button = QPushButton("Add Course")
     cancel_button = QPushButton("Cancel")
     action_layout = QBoxLayout(QBoxLayout.LeftToRight)
-    action_layout.addWidget(add_course_button)
     action_layout.addWidget(cancel_button)
+    action_layout.addWidget(add_course_button)
     action_widget.setLayout(action_layout)
+    action_widget.setTabOrder(add_course_button, cancel_button)
 
     # add widgets
     main_layout.addWidget(form_widget)

@@ -12,4 +12,16 @@ class CustomLineEdit(QLineEdit):
       self.default_entry = CustomLineEdit.DEFAULT_ENTRY
     self.setText(self.default_entry)
 
+  def focusInEvent(self, event):
+    super().focusInEvent(event)
+    if (self.text().strip() == self.default_entry):
+      self.setText("")
+    #self.selectAll()
+
+  def focusOutEvent(self, event):
+    super().focusOutEvent(event)
+    if (self.text().strip() == ""):
+      self.setText(self.default_entry)
+      
+
 
